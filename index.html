@@ -2,180 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Kezbe Bayda and Massela</title>
-  <meta name="description" content="Two Lebanese party games by Charbel Abou Khalil. Kezbe Bayda, the game show of lies, and Massela, Lebanese charades.">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://charbelabou.github.io/">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charbel's Apps</title>
+  <meta name="description" content="Kezbe Bayda and Massela, Lebanese party games, on the App Store and Google Play.">
+  <meta name="theme-color" content="#F7F1E8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#120A0C" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://charbelabou.github.io/apps/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Kezbe Bayda and Massela">
-  <meta property="og:description" content="Two Lebanese party games by Charbel Abou Khalil.">
-  <meta property="og:url" content="https://charbelabou.github.io/">
-  <meta property="og:image" content="https://charbelabou.github.io/img/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="icon" href="img/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-
-  <link rel="preload" href="fonts/bowlby-one.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/titan-one.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
-
+  <meta property="og:title" content="Charbel's Apps">
+  <meta property="og:description" content="Kezbe Bayda and Massela, Lebanese party games.">
+  <meta property="og:url" content="https://charbelabou.github.io/apps/">
+  <!-- GitHub Pages cannot send a server-side 301, so this root page forwards to /apps/ instantly. -->
+  <meta http-equiv="refresh" content="0; url=/apps/">
+  <script>location.replace('/apps/' + location.search + location.hash);</script>
   <style>
-    @font-face { font-family: "Bowlby One"; src: url("fonts/bowlby-one.woff2") format("woff2"); font-display: swap; }
-    @font-face { font-family: "Titan One"; src: url("fonts/titan-one.woff2") format("woff2"); font-display: swap; }
-    @font-face { font-family: "DM Sans"; src: url("fonts/dm-sans.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
-
-    :root {
-      --ink: #161616;
-      --ink-soft: #6b6b6b;
-
-      --kb-bg: #7c1428;
-      --kb-deep: #2a0710;
-      --kb-gold: #ffc83d;
-      --kb-cream: #fff1d6;
-
-      --ms-bg: #df2b21;
-      --ms-navy: #0e2b3f;
-
-      --text: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      background: #fff;
-      color: var(--ink);
-      font-family: var(--text);
-      font-weight: 500;
-      -webkit-font-smoothing: antialiased;
-      -webkit-tap-highlight-color: transparent;
-    }
-    h1, h2, p { margin: 0; }
-    img { display: block; }
-    a { color: inherit; }
-
-    .page {
-      max-width: 480px;
-      min-height: 100vh;
-      min-height: 100svh;
-      margin: 0 auto;
-      display: flex; flex-direction: column; justify-content: center;
-      padding:
-        max(28px, env(safe-area-inset-top))
-        max(16px, env(safe-area-inset-right))
-        max(28px, env(safe-area-inset-bottom))
-        max(16px, env(safe-area-inset-left));
-    }
-
-    h1 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; padding: 0 4px; }
-
-    .cards { display: grid; gap: 12px; margin-top: 20px; }
-
-    .card { border-radius: 24px; padding: 20px; }
-
-    .head { display: flex; align-items: center; gap: 16px; }
-    .icon { flex: none; width: 64px; height: 64px; border-radius: 15px; }
-    h2 { font-weight: 400; line-height: 1.05; font-size: clamp(21px, 7.2vw, 30px); letter-spacing: .01em; }
-    .tag { margin-top: 6px; font-size: 16px; font-weight: 700; }
-
-    .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; }
-    .stores a { display: block; border-radius: 8px; transition: opacity .15s ease; }
-    .stores a:active { opacity: .8; }
-    .stores img { height: 44px; width: auto; }
-    .soon { font-size: 14px; font-weight: 700; padding-left: 4px; }
-
-    /* Kezbe Bayda: burgundy, gold Bowlby One title with the show's hard shadow */
-    .kb { background: var(--kb-bg); color: var(--kb-cream); }
-    .kb .icon { box-shadow: 0 0 0 2px var(--kb-cream); }
-    .kb h2 { font-family: "Bowlby One", var(--text); color: var(--kb-gold); text-shadow: 0 3px 0 var(--kb-deep); }
-    .kb a:focus-visible { outline: 3px solid var(--kb-gold); outline-offset: 3px; }
-
-    /* Massela: red, white Titan One title with a navy outline */
-    .ms { background: var(--ms-bg); color: #fff; }
-    .ms .icon { box-shadow: 0 0 0 2px var(--ms-navy); }
-    .ms h2 {
-      font-family: "Titan One", var(--text); color: #fff;
-      text-shadow:
-        -2px -2px 0 var(--ms-navy), 2px -2px 0 var(--ms-navy), -2px 2px 0 var(--ms-navy), 2px 2px 0 var(--ms-navy),
-        0 -2px 0 var(--ms-navy), 0 2px 0 var(--ms-navy), -2px 0 0 var(--ms-navy), 2px 0 0 var(--ms-navy),
-        0 4px 0 var(--ms-navy);
-    }
-    .ms a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-
-    footer { margin-top: 28px; padding: 0 4px; font-size: 14px; color: var(--ink-soft); display: grid; gap: 6px; }
-    footer p { display: flex; flex-wrap: wrap; gap: 4px 14px; }
-    footer span { color: var(--ink); font-weight: 700; min-width: 96px; }
-    footer a { text-underline-offset: 3px; }
-    footer a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-
-    @media (max-width: 359px) {
-      .head { gap: 14px; }
-      .icon { width: 56px; height: 56px; border-radius: 13px; }
-      h2 { font-size: 21px; }
-      .tag { font-size: 15px; }
-    }
-    @media (min-width: 700px) {
-      .page { max-width: 540px; }
-      h1 { font-size: 18px; }
-      .cards { gap: 16px; margin-top: 24px; }
-      .card { padding: 28px; border-radius: 28px; }
-      .head { gap: 20px; }
-      .icon { width: 80px; height: 80px; border-radius: 18px; }
-      h2 { font-size: 34px; }
-      .tag { font-size: 17px; }
-      .stores { margin-top: 24px; }
-      .stores img { height: 46px; }
-      footer { margin-top: 32px; }
-    }
-    @media (hover: hover) {
-      .stores a:hover { opacity: .85; }
-      footer a:hover { color: var(--ink); }
-    }
+    html { background: #F7F1E8; color: #6B5A5C; font: 500 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 24px; }
+    a { color: inherit; text-underline-offset: 4px; }
+    @media (prefers-color-scheme: dark) { html { background: #120A0C; color: #B9A5A9; } }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Charbel Abou Khalil</h1>
-
-    <main class="cards">
-      <section class="card kb" aria-labelledby="kb">
-        <div class="head">
-          <img class="icon" src="img/kezbe-bayda.png" width="64" height="64" alt="">
-          <div>
-            <h2 id="kb">Kezbe Bayda</h2>
-            <p class="tag">The game show of lies</p>
-          </div>
-        </div>
-        <div class="stores">
-          <a href="https://apps.apple.com/app/id6816085585"><img src="img/app-store.svg" width="132" height="44" alt="Download Kezbe Bayda on the App Store"></a>
-          <a href="https://play.google.com/store/apps/details?id=com.kezbebayda.app"><img src="img/google-play.png" width="148" height="44" alt="Get Kezbe Bayda on Google Play"></a>
-        </div>
-      </section>
-
-      <section class="card ms" aria-labelledby="ms">
-        <div class="head">
-          <img class="icon" src="img/massela.png" width="64" height="64" alt="">
-          <div>
-            <h2 id="ms">Massela</h2>
-            <p class="tag">Lebanese charades</p>
-          </div>
-        </div>
-        <div class="stores">
-          <a href="https://apps.apple.com/app/id6757847836"><img src="img/app-store.svg" width="132" height="44" alt="Download Massela on the App Store"></a>
-          <span class="soon">Android coming soon</span>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p><span>Kezbe Bayda</span><a href="https://charbelabou.github.io/legal/kezbe-bayda/support.html">Support</a><a href="https://charbelabou.github.io/legal/kezbe-bayda/privacy.html">Privacy</a></p>
-      <p><span>Massela</span><a href="https://charbelabou.github.io/legal/massela/support.html">Support</a><a href="https://charbelabou.github.io/legal/massela/privacy.html">Privacy</a></p>
-    </footer>
-  </div>
+  <p>Taking you to <a href="/apps/">Charbel's Apps</a>…</p>
 </body>
 </html>
