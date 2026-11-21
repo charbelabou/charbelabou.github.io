@@ -3,443 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Charbel Abou Khalil · Games</title>
-  <meta name="description" content="Kezbe Bayda and Massela: Lebanese party games for iPhone and Android, made to be played together in the same room.">
-  <meta name="theme-color" content="#09090b">
-  <meta name="color-scheme" content="dark">
+  <title>Kezbe Bayda and Massela</title>
+  <meta name="description" content="Two Lebanese party games by Charbel Abou Khalil. Kezbe Bayda, the game show of lies, and Massela, Lebanese charades.">
+  <meta name="theme-color" content="#5e0d1b">
   <link rel="canonical" href="https://charbelabou.github.io/">
 
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Charbel Abou Khalil">
-  <meta property="og:title" content="Game night, the Lebanese way.">
-  <meta property="og:description" content="Kezbe Bayda and Massela: party games by Charbel Abou Khalil.">
+  <meta property="og:title" content="Kezbe Bayda and Massela">
+  <meta property="og:description" content="Two Lebanese party games by Charbel Abou Khalil.">
   <meta property="og:url" content="https://charbelabou.github.io/">
-  <meta property="og:image" content="https://charbelabou.github.io/assets/img/og.jpg">
+  <meta property="og:image" content="https://charbelabou.github.io/img/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Kezbe Bayda and Massela, party games by Charbel Abou Khalil">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-  <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-
-  <script>
-    /* Put the visitor's own store first and highlight it (Instagram's in-app browser reports iPhone or Android). */
-    (function () {
-      var ua = navigator.userAgent || "";
-      var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-      var p = ios ? "ios" : /Android/.test(ua) ? "android" : "";
-      if (p) document.documentElement.setAttribute("data-platform", p);
-    })();
-  </script>
+  <link rel="preload" href="fonts/bowlby-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/titan-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
-    @font-face {
-      font-family: "Unbounded";
-      src: url("assets/fonts/unbounded-latin.woff2") format("woff2");
-      font-weight: 500 800;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Inter";
-      src: url("assets/fonts/inter-latin.woff2") format("woff2");
-      font-weight: 400 700;
-      font-display: swap;
-    }
+    @font-face { font-family: "Bowlby One"; src: url("fonts/bowlby-one.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: "Titan One"; src: url("fonts/titan-one.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: "DM Sans"; src: url("fonts/dm-sans.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
 
     :root {
-      --bg: #09090b;
-      --text: #f6f4f1;
-      --muted: rgba(246, 244, 241, .64);
-      --faint: rgba(246, 244, 241, .42);
-      --line: rgba(255, 255, 255, .08);
-      --line-strong: rgba(255, 255, 255, .16);
-      --gold: #ffc83d;
-      --live: #3ddc84;
+      /* Kezbe Bayda */
+      --kb-ray-a: #7c1428;
+      --kb-ray-b: #5e0d1b;
+      --kb-deep: #2a0710;
+      --kb-gold: #ffc83d;
+      --kb-cream: #fff1d6;
+      /* Massela (red darkened a touch from #ea3025 so white text passes contrast) */
+      --ms-red: #df2b21;
+      --ms-navy: #0e2b3f;
 
-      --display: "Unbounded", "Arial Black", system-ui, sans-serif;
-      --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --gutter: 16px;
+      --text: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body {
       margin: 0;
-      min-height: 100vh;
-      min-height: 100svh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--body);
-      font-size: 16px;
-      line-height: 1.5;
+      background: var(--ms-red);
+      font-family: var(--text);
+      font-weight: 500;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       -webkit-tap-highlight-color: transparent;
-      overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
-    img, svg { display: block; }
-    h1, h2, p, dl, dd { margin: 0; }
-    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+    h1, h2, p { margin: 0; }
+    img { display: block; }
+    a { color: inherit; }
 
-    /* ---------- Background: warm stage light, a faint lobby grid and film grain ---------- */
-    .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-    .bg__glow {
-      position: absolute; left: -25%; right: -25%; top: -30vh; height: 110vh;
-      background:
-        radial-gradient(38% 46% at 26% 38%, rgba(142, 23, 48, .62), transparent 72%),
-        radial-gradient(34% 40% at 76% 30%, rgba(234, 48, 37, .30), transparent 72%),
-        radial-gradient(26% 26% at 52% 58%, rgba(255, 200, 61, .09), transparent 72%);
-      animation: drift 22s ease-in-out infinite alternate;
-    }
-    .bg__grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
-      background-size: 48px 48px;
-      background-position: center top;
-      -webkit-mask-image: radial-gradient(ellipse 70% 48% at 50% 0%, #000 20%, transparent 78%);
-              mask-image: radial-gradient(ellipse 70% 48% at 50% 0%, #000 20%, transparent 78%);
-    }
-    .bg__grain {
-      position: absolute; inset: 0; opacity: .07;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    .bg__fade {
-      position: absolute; inset: auto 0 0 0; height: 40vh;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-    }
-    @keyframes drift {
-      from { transform: translate3d(-3%, 0, 0) scale(1); }
-      to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
-    }
+    main { display: grid; }
 
-    /* ---------- Layout ---------- */
-    .page {
-      width: 100%;
-      max-width: 560px;
-      margin: 0 auto;
-      padding:
-        max(14px, env(safe-area-inset-top))
-        max(var(--gutter), env(safe-area-inset-right))
-        max(28px, env(safe-area-inset-bottom))
-        max(var(--gutter), env(safe-area-inset-left));
-      display: flex; flex-direction: column;
-      min-height: 100vh;
-      min-height: 100svh;
-    }
-    .main { display: grid; gap: 28px; padding: 30px 0 40px; }
-
-    /* ---------- Top bar ---------- */
-    .top { display: flex; align-items: center; gap: 12px; min-height: 44px; }
-    .mark {
-      position: relative; flex: none;
-      width: 34px; height: 34px; border-radius: 10px;
-      display: grid; place-items: center;
-      background: linear-gradient(140deg, #9b1a35 0%, #e5332a 100%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 6px 18px -6px rgba(229, 51, 42, .7);
-      font: 700 12px/1 var(--display); letter-spacing: -.02em; color: #fff;
-    }
-    .top__name { font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
-    .top__role { color: var(--faint); font-size: 13px; line-height: 1.2; }
-
-    /* ---------- Hero ---------- */
-    .hero { display: grid; gap: 16px; justify-items: start; }
-    .live {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 7px 12px 7px 10px; border-radius: 999px;
-      background: rgba(255, 255, 255, .05);
-      border: 1px solid var(--line);
-      font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    .live__dot {
-      position: relative; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--live); box-shadow: 0 0 10px var(--live);
-    }
-    .live__dot::after {
-      content: ""; position: absolute; inset: -4px; border-radius: 50%;
-      border: 1px solid var(--live); opacity: 0;
-      animation: ping 2.4s cubic-bezier(.2, .6, .3, 1) infinite;
-    }
-    @keyframes ping {
-      0% { transform: scale(.4); opacity: .9; }
-      80%, 100% { transform: scale(1.5); opacity: 0; }
-    }
-    h1 {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: clamp(23px, 7.4vw, 40px);
-      line-height: 1.08;
-      letter-spacing: -.035em;
-      word-spacing: .04em;
-    }
-    h1 .accent {
-      display: inline-block;
-      background: linear-gradient(95deg, #ffe29a 0%, #ffc83d 45%, #ff8a4c 100%);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent; color: transparent;
-    }
-    .lead { color: var(--muted); font-size: 16px; max-width: 34ch; }
-
-    /* ---------- Game cards ---------- */
-    .games { display: grid; gap: 14px; }
     .game {
-      position: relative; isolation: isolate; overflow: hidden;
-      padding: 18px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .025));
-      border: 1px solid var(--line);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05), 0 24px 48px -28px rgba(0, 0, 0, .9);
-      display: grid; gap: 16px;
-      transition: border-color .25s ease, transform .35s cubic-bezier(.2, .7, .2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 56px 24px 20px;
+      padding-left: max(24px, env(safe-area-inset-left));
+      padding-right: max(24px, env(safe-area-inset-right));
     }
-    .game::before {           /* the game's own colour, glowing from behind its icon */
-      content: ""; position: absolute; inset: 0; z-index: -1;
-      background: radial-gradient(90% 70% at 0% 0%, var(--glow), transparent 70%);
-    }
-    .game::after {            /* hairline highlight along the top edge */
-      content: ""; position: absolute; top: 0; left: 24px; right: 24px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--edge), transparent);
-    }
-    .game--kb { --glow: rgba(142, 23, 48, .55); --edge: rgba(255, 200, 61, .65); }
-    .game--ms { --glow: rgba(234, 48, 37, .34); --edge: rgba(255, 120, 80, .65); }
+    .game > * { position: relative; }
 
-    .game__head { display: flex; align-items: center; gap: 14px; }
-    .icon {
-      position: relative; flex: none; width: 64px; height: 64px;
-      border-radius: 15px; overflow: hidden;
-      box-shadow: 0 10px 24px -10px var(--glow), 0 2px 6px rgba(0, 0, 0, .45);
-    }
-    .icon img { width: 100%; height: 100%; object-fit: cover; }
-    .icon::after {
-      content: ""; position: absolute; inset: 0; border-radius: inherit;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14);
-    }
-    .game__title { min-width: 0; flex: 1; }
-    h2 {
-      font-family: var(--display); font-weight: 600;
-      font-size: 20px; line-height: 1.15; letter-spacing: -.03em;
-    }
-    .game__tag { color: var(--muted); font-size: 14px; margin-top: 4px; }
-    .game__no {
-      align-self: flex-start;
-      font: 600 11px/1 var(--body); letter-spacing: .14em; color: var(--faint);
-      font-variant-numeric: tabular-nums;
-    }
-    .game__desc { font-size: 15px; line-height: 1.5; color: rgba(246, 244, 241, .86); }
+    .icon { width: 96px; height: 96px; border-radius: 22px; }
 
-    .stats {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-      border: 1px solid var(--line); border-radius: 14px;
-      background: rgba(0, 0, 0, .22);
+    h2 { font-weight: 400; line-height: 1; margin-top: 26px; }
+
+    .line { margin-top: 16px; font-size: 19px; font-weight: 700; line-height: 1.3; }
+    .how { margin-top: 4px; font-size: 17px; line-height: 1.4; max-width: 30ch; text-wrap: balance; }
+
+    .stores {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 12px; margin-top: 30px;
     }
-    .stats div { padding: 10px 12px; min-width: 0; }
-    .stats div + div { border-left: 1px solid var(--line); }
-    .stats dt {
-      font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--faint);
-    }
-    .stats dd {
-      margin-top: 3px; font-size: 14.5px; font-weight: 600; letter-spacing: -.01em;
-      font-variant-numeric: tabular-nums; white-space: nowrap;
+    .stores a { display: block; border-radius: 9px; transition: transform .12s ease; }
+    .stores a:active { transform: translateY(1px); }
+    .stores img { height: 48px; width: auto; }
+    .soon { margin-top: 12px; font-size: 15px; }
+
+    .links { display: flex; gap: 24px; margin-top: 36px; font-size: 15px; }
+    .links a {
+      display: inline-flex; align-items: center; min-height: 44px;
+      text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
+      text-decoration-color: currentColor;
     }
 
-    /* ---------- Store buttons ---------- */
-    .stores { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .store {
-      display: flex; align-items: center; justify-content: center; gap: 9px;
-      min-height: 52px; padding: 8px 10px;
-      border-radius: 14px;
-      background: rgba(0, 0, 0, .5);
-      border: 1px solid var(--line-strong);
+    /* ---------- Kezbe Bayda: the show's sunburst, gold title with a hard shadow ---------- */
+    .kb { background: var(--kb-ray-b); color: var(--kb-cream); padding-top: max(20px, env(safe-area-inset-top)); }
+    .kb::before {
+      content: ""; position: absolute; left: 50%; top: 210px;
+      width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px;
+      background: repeating-conic-gradient(var(--kb-ray-a) 0 5deg, var(--kb-ray-b) 5deg 10deg);
+    }
+    .kb::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(120% 80% at 50% 210px, transparent 30%, rgba(26, 3, 9, .7) 100%);
+    }
+    .kb .icon { box-shadow: 0 0 0 3px var(--kb-cream), 0 7px 0 3px var(--kb-deep); }
+    .kb h2 {
+      font-family: "Bowlby One", var(--text);
+      font-size: clamp(30px, 10.2vw, 64px);
+      letter-spacing: .01em;
+      color: var(--kb-gold);
+      text-shadow: 0 5px 0 var(--kb-deep);
+    }
+    .kb a:focus-visible { outline: 3px solid var(--kb-gold); outline-offset: 3px; }
+
+    .owner {
+      align-self: stretch; text-align: left;
+      margin-bottom: 36px;
+      font-size: 15px; font-weight: 700; color: var(--kb-cream);
+    }
+
+    /* ---------- Massela: red with white dots, white title with a navy outline ---------- */
+    .ms { background: var(--ms-red); color: #fff; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+    .ms::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(rgba(255, 255, 255, .16) 2.2px, transparent 2.8px) 0 0 / 20px 20px;
+    }
+    .ms .icon { box-shadow: 0 0 0 3px var(--ms-navy), 0 7px 0 3px var(--ms-navy); }
+    .ms h2 {
+      font-family: "Titan One", var(--text);
+      font-size: clamp(44px, 14vw, 72px);
+      letter-spacing: .01em;
       color: #fff;
-      transition: background-color .2s ease, border-color .2s ease, transform .15s ease;
+      text-shadow:
+        -3px -3px 0 var(--ms-navy), 3px -3px 0 var(--ms-navy), -3px 3px 0 var(--ms-navy), 3px 3px 0 var(--ms-navy),
+        0 -3px 0 var(--ms-navy), 0 3px 0 var(--ms-navy), -3px 0 0 var(--ms-navy), 3px 0 0 var(--ms-navy),
+        0 7px 0 var(--ms-navy);
     }
-    .store svg { flex: none; width: 21px; height: 21px; }
-    .store__label { display: grid; line-height: 1.1; text-align: left; }
-    .store__label small { font-size: 10.5px; font-weight: 500; opacity: .78; letter-spacing: .01em; }
-    .store__label b {
-      font-size: clamp(14.5px, 4.1vw, 17px); font-weight: 600; letter-spacing: -.015em; white-space: nowrap;
-    }
-    a.store:active { transform: scale(.97); }
-    @media (hover: hover) {
-      a.store:hover { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .32); }
-      .game:hover { border-color: rgba(255, 255, 255, .14); transform: translateY(-2px); }
-    }
+    .ms a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
-    /* The visitor's own platform: first, and filled. */
-    [data-platform="ios"] a.store--ios,
-    [data-platform="android"] a.store--android {
-      background: var(--text); color: #0b0b0d; border-color: transparent;
-      box-shadow: 0 10px 24px -12px rgba(255, 255, 255, .45);
-    }
-    [data-platform="ios"] a.store--ios:hover,
-    [data-platform="android"] a.store--android:hover { background: #fff; }
-    [data-platform="android"] a.store--android { order: -1; }
-
-    .store--soon {
-      background: transparent; border-style: dashed; border-color: rgba(255, 255, 255, .14);
-      color: var(--faint); cursor: default;
-    }
-    .store--soon svg { filter: grayscale(1); opacity: .5; }
-
-    /* ---------- Footer ---------- */
-    .foot {
-      margin-top: auto;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      display: grid; gap: 10px;
-      font-size: 13px; color: var(--faint);
-    }
-    .foot__row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
-    .foot__row span { color: var(--muted); font-weight: 500; min-width: 92px; }
-    .foot a { transition: color .2s ease; }
-    .foot a:hover { color: var(--text); }
-    .foot__copy { margin-top: 6px; }
-
-    /* ---------- Entrance ---------- */
-    .rise { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
-    @keyframes rise {
-      from { opacity: 0; transform: translate3d(0, 14px, 0); }
-      to   { opacity: 1; transform: none; }
-    }
-
-    /* ---------- Small phones (320–359px): tighter card, stacked store buttons ---------- */
-    @media (max-width: 359px) {
-      .game { padding: 16px; }
-      .icon { width: 56px; height: 56px; border-radius: 13px; }
-      h2 { font-size: 18px; }
-      .stats div { padding: 9px 10px; }
-      .stats dt { font-size: 9.5px; letter-spacing: .1em; }
-      .stats dd { font-size: 13.5px; white-space: normal; }
-      .stores { grid-template-columns: 1fr; }
-    }
-
-    /* ---------- Wide screens: headline left, games right ---------- */
-    @media (min-width: 1024px) {
-      :root { --gutter: 48px; }
-      .page { max-width: 1200px; }
-      .main {
-        flex: 1;
-        grid-template-columns: minmax(0, 1fr) 460px;
-        align-items: center;
-        gap: 56px;
-        padding: 48px 0 56px;
-      }
-      .hero { gap: 22px; }
-      h1 { font-size: clamp(34px, 3.5vw, 50px); }
-      .lead { font-size: 18px; }
-      .foot { grid-template-columns: auto auto 1fr; align-items: baseline; column-gap: 40px; }
-      .foot__row span { min-width: 0; margin-right: 4px; }
-      .foot__copy { margin-top: 0; justify-self: end; }
+    /* ---------- Wide screens: the two games side by side ---------- */
+    @media (min-width: 900px) {
+      main { grid-template-columns: 1fr 1fr; min-height: 100vh; }
+      .game { padding: max(96px, 22vh) 40px 96px; }
+      .owner { position: absolute; top: 32px; left: 40px; margin: 0; }
+      .links { position: absolute; bottom: 24px; margin: 0; }
+      .icon { width: 112px; height: 112px; border-radius: 26px; }
+      .kb::before, .kb::after { top: 0; }
+      .kb::before { top: 42%; }
+      .kb::after { background: radial-gradient(110% 80% at 50% 42%, transparent 30%, rgba(26, 3, 9, .7) 100%); }
+      .kb h2 { font-size: clamp(52px, 5.4vw, 76px); }
+      .ms h2 { font-size: clamp(60px, 6.4vw, 88px); }
+      .line { font-size: 21px; }
+      .how { font-size: 18px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .bg__glow, .live__dot::after, .rise { animation: none; }
-      .game, .store { transition: none; }
+      .stores a { transition: none; }
     }
   </style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="bg__glow"></div>
-    <div class="bg__grid"></div>
-    <div class="bg__grain"></div>
-    <div class="bg__fade"></div>
-  </div>
-
-  <div class="page">
-    <header class="top rise" style="--i:0">
-      <span class="mark" aria-hidden="true">CA</span>
-      <div>
-        <div class="top__name">Charbel Abou Khalil</div>
-        <div class="top__role">Game developer</div>
+  <main>
+    <section class="game kb" aria-labelledby="kb">
+      <h1 class="owner">Charbel Abou Khalil</h1>
+      <img class="icon" src="img/kezbe-bayda.png" width="96" height="96" alt="Kezbe Bayda app icon">
+      <h2 id="kb">Kezbe Bayda</h2>
+      <p class="line">The game show of lies.</p>
+      <p class="how">Write a fake answer, then find the real one.</p>
+      <div class="stores">
+        <a href="https://apps.apple.com/app/id6816085585"><img src="img/app-store.svg" width="144" height="48" alt="Download Kezbe Bayda on the App Store"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.kezbebayda.app"><img src="img/google-play.png" width="161" height="48" alt="Get Kezbe Bayda on Google Play"></a>
       </div>
-    </header>
-
-    <main class="main">
-      <section class="hero" aria-labelledby="headline">
-        <p class="live rise" style="--i:1"><span class="live__dot" aria-hidden="true"></span>2 games out now</p>
-        <h1 id="headline" class="rise" style="--i:2">Game night,<br><span class="accent">the Lebanese way.</span></h1>
-        <p class="lead rise" style="--i:3">Two party games, made to be played together in the same room.</p>
-      </section>
-
-      <section class="games" aria-label="Games">
-        <article class="game game--kb rise" style="--i:4" aria-labelledby="kb-name">
-          <div class="game__head">
-            <span class="icon"><img src="assets/img/kezbe-bayda.png" width="64" height="64" alt=""></span>
-            <div class="game__title">
-              <h2 id="kb-name">Kezbe Bayda</h2>
-              <p class="game__tag">The game show of lies</p>
-            </div>
-            <span class="game__no" aria-hidden="true">01</span>
-          </div>
-          <p class="game__desc">Everyone writes a fake answer. Spot the real one, and fool your friends with yours.</p>
-          <dl class="stats">
-            <div><dt>Players</dt><dd>3&ndash;8</dd></div>
-            <div><dt>Questions</dt><dd>570+</dd></div>
-            <div><dt>Play on</dt><dd>Same Wi&#8209;Fi</dd></div>
-          </dl>
-          <div class="stores">
-            <a class="store store--ios" href="https://apps.apple.com/app/id6816085585" aria-label="Download Kezbe Bayda on the App Store">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-              <span class="store__label"><small>Download on the</small><b>App Store</b></span>
-            </a>
-            <a class="store store--android" href="https://play.google.com/store/apps/details?id=com.kezbebayda.app" aria-label="Get Kezbe Bayda on Google Play">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c3ff" d="M3.6 1.9 13.4 12l-9.8 10.1c-.4-.2-.6-.7-.6-1.2V3.1c0-.5.2-1 .6-1.2z"/><path fill="#00e676" d="M3.6 1.9c.3-.2.8-.2 1.3.1l11.6 6.7-3.1 3.3z"/><path fill="#ff3d47" d="M13.4 12l3.1 3.3-11.6 6.7c-.5.3-1 .3-1.3.1z"/><path fill="#ffd400" d="m16.5 8.7 3.6 2.1c.9.5.9 1.9 0 2.4l-3.6 2.1-3.1-3.3z"/></svg>
-              <span class="store__label"><small>Get it on</small><b>Google Play</b></span>
-            </a>
-          </div>
-        </article>
-
-        <article class="game game--ms rise" style="--i:5" aria-labelledby="ms-name">
-          <div class="game__head">
-            <span class="icon"><img src="assets/img/massela.png" width="64" height="64" alt=""></span>
-            <div class="game__title">
-              <h2 id="ms-name">Massela</h2>
-              <p class="game__tag">Lebanese charades</p>
-            </div>
-            <span class="game__no" aria-hidden="true">02</span>
-          </div>
-          <p class="game__desc">Act it out and beat the clock. Play the built-in packs or make your own.</p>
-          <dl class="stats">
-            <div><dt>Price</dt><dd>Free</dd></div>
-            <div><dt>Ads</dt><dd>None</dd></div>
-            <div><dt>Internet</dt><dd>Not needed</dd></div>
-          </dl>
-          <div class="stores">
-            <a class="store store--ios" href="https://apps.apple.com/app/id6757847836" aria-label="Download Massela on the App Store">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-              <span class="store__label"><small>Download on the</small><b>App Store</b></span>
-            </a>
-            <span class="store store--soon" role="note" aria-label="Massela on Google Play: coming soon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c3ff" d="M3.6 1.9 13.4 12l-9.8 10.1c-.4-.2-.6-.7-.6-1.2V3.1c0-.5.2-1 .6-1.2z"/><path fill="#00e676" d="M3.6 1.9c.3-.2.8-.2 1.3.1l11.6 6.7-3.1 3.3z"/><path fill="#ff3d47" d="M13.4 12l3.1 3.3-11.6 6.7c-.5.3-1 .3-1.3.1z"/><path fill="#ffd400" d="m16.5 8.7 3.6 2.1c.9.5.9 1.9 0 2.4l-3.6 2.1-3.1-3.3z"/></svg>
-              <span class="store__label"><small>Google Play</small><b>Coming soon</b></span>
-            </span>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <footer class="foot">
-      <div class="foot__row">
-        <span>Kezbe Bayda</span>
+      <p class="links">
         <a href="https://charbelabou.github.io/legal/kezbe-bayda/support.html">Support</a>
         <a href="https://charbelabou.github.io/legal/kezbe-bayda/privacy.html">Privacy</a>
+      </p>
+    </section>
+
+    <section class="game ms" aria-labelledby="ms">
+      <img class="icon" src="img/massela.png" width="96" height="96" alt="Massela app icon">
+      <h2 id="ms">Massela</h2>
+      <p class="line">Lebanese charades.</p>
+      <p class="how">Act out the word before the time runs out.</p>
+      <div class="stores">
+        <a href="https://apps.apple.com/app/id6757847836"><img src="img/app-store.svg" width="144" height="48" alt="Download Massela on the App Store"></a>
       </div>
-      <div class="foot__row">
-        <span>Massela</span>
+      <p class="soon">Android version coming soon.</p>
+      <p class="links">
         <a href="https://charbelabou.github.io/legal/massela/support.html">Support</a>
         <a href="https://charbelabou.github.io/legal/massela/privacy.html">Privacy</a>
-      </div>
-      <p class="foot__copy">&copy; 2026 Charbel Abou Khalil</p>
-    </footer>
-  </div>
+      </p>
+    </section>
+  </main>
 </body>
 </html>
