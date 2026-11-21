@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kezbe Bayda and Massela</title>
   <meta name="description" content="Two Lebanese party games by Charbel Abou Khalil. Kezbe Bayda, the game show of lies, and Massela, Lebanese charades.">
-  <meta name="theme-color" content="#5e0d1b">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://charbelabou.github.io/">
 
   <meta property="og:type" content="website">
@@ -30,14 +30,15 @@
     @font-face { font-family: "DM Sans"; src: url("fonts/dm-sans.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
 
     :root {
-      /* Kezbe Bayda */
-      --kb-ray-a: #7c1428;
-      --kb-ray-b: #5e0d1b;
+      --ink: #161616;
+      --ink-soft: #6b6b6b;
+
+      --kb-bg: #7c1428;
       --kb-deep: #2a0710;
       --kb-gold: #ffc83d;
       --kb-cream: #fff1d6;
-      /* Massela (red darkened a touch from #ea3025 so white text passes contrast) */
-      --ms-red: #df2b21;
+
+      --ms-bg: #df2b21;
       --ms-navy: #0e2b3f;
 
       --text: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -47,7 +48,8 @@
     html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body {
       margin: 0;
-      background: var(--ms-red);
+      background: #fff;
+      color: var(--ink);
       font-family: var(--text);
       font-weight: 500;
       -webkit-font-smoothing: antialiased;
@@ -57,143 +59,123 @@
     img { display: block; }
     a { color: inherit; }
 
-    main { display: grid; }
-
-    .game {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 56px 24px 20px;
-      padding-left: max(24px, env(safe-area-inset-left));
-      padding-right: max(24px, env(safe-area-inset-right));
-    }
-    .game > * { position: relative; }
-
-    .icon { width: 96px; height: 96px; border-radius: 22px; }
-
-    h2 { font-weight: 400; line-height: 1; margin-top: 26px; }
-
-    .line { margin-top: 16px; font-size: 19px; font-weight: 700; line-height: 1.3; }
-    .how { margin-top: 4px; font-size: 17px; line-height: 1.4; max-width: 30ch; text-wrap: balance; }
-
-    .stores {
-      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-      gap: 12px; margin-top: 30px;
-    }
-    .stores a { display: block; border-radius: 9px; transition: transform .12s ease; }
-    .stores a:active { transform: translateY(1px); }
-    .stores img { height: 48px; width: auto; }
-    .soon { margin-top: 12px; font-size: 15px; }
-
-    .links { display: flex; gap: 24px; margin-top: 36px; font-size: 15px; }
-    .links a {
-      display: inline-flex; align-items: center; min-height: 44px;
-      text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
-      text-decoration-color: currentColor;
+    .page {
+      max-width: 480px;
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0 auto;
+      display: flex; flex-direction: column; justify-content: center;
+      padding:
+        max(28px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(28px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
     }
 
-    /* ---------- Kezbe Bayda: the show's sunburst, gold title with a hard shadow ---------- */
-    .kb { background: var(--kb-ray-b); color: var(--kb-cream); padding-top: max(20px, env(safe-area-inset-top)); }
-    .kb::before {
-      content: ""; position: absolute; left: 50%; top: 210px;
-      width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px;
-      background: repeating-conic-gradient(var(--kb-ray-a) 0 5deg, var(--kb-ray-b) 5deg 10deg);
-    }
-    .kb::after {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(120% 80% at 50% 210px, transparent 30%, rgba(26, 3, 9, .7) 100%);
-    }
-    .kb .icon { box-shadow: 0 0 0 3px var(--kb-cream), 0 7px 0 3px var(--kb-deep); }
-    .kb h2 {
-      font-family: "Bowlby One", var(--text);
-      font-size: clamp(30px, 10.2vw, 64px);
-      letter-spacing: .01em;
-      color: var(--kb-gold);
-      text-shadow: 0 5px 0 var(--kb-deep);
-    }
+    h1 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; padding: 0 4px; }
+
+    .cards { display: grid; gap: 12px; margin-top: 20px; }
+
+    .card { border-radius: 24px; padding: 20px; }
+
+    .head { display: flex; align-items: center; gap: 16px; }
+    .icon { flex: none; width: 64px; height: 64px; border-radius: 15px; }
+    h2 { font-weight: 400; line-height: 1.05; font-size: clamp(21px, 7.2vw, 30px); letter-spacing: .01em; }
+    .tag { margin-top: 6px; font-size: 16px; font-weight: 700; }
+
+    .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; }
+    .stores a { display: block; border-radius: 8px; transition: opacity .15s ease; }
+    .stores a:active { opacity: .8; }
+    .stores img { height: 44px; width: auto; }
+    .soon { font-size: 14px; font-weight: 700; padding-left: 4px; }
+
+    /* Kezbe Bayda: burgundy, gold Bowlby One title with the show's hard shadow */
+    .kb { background: var(--kb-bg); color: var(--kb-cream); }
+    .kb .icon { box-shadow: 0 0 0 2px var(--kb-cream); }
+    .kb h2 { font-family: "Bowlby One", var(--text); color: var(--kb-gold); text-shadow: 0 3px 0 var(--kb-deep); }
     .kb a:focus-visible { outline: 3px solid var(--kb-gold); outline-offset: 3px; }
 
-    .owner {
-      align-self: stretch; text-align: left;
-      margin-bottom: 36px;
-      font-size: 15px; font-weight: 700; color: var(--kb-cream);
-    }
-
-    /* ---------- Massela: red with white dots, white title with a navy outline ---------- */
-    .ms { background: var(--ms-red); color: #fff; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
-    .ms::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(rgba(255, 255, 255, .16) 2.2px, transparent 2.8px) 0 0 / 20px 20px;
-    }
-    .ms .icon { box-shadow: 0 0 0 3px var(--ms-navy), 0 7px 0 3px var(--ms-navy); }
+    /* Massela: red, white Titan One title with a navy outline */
+    .ms { background: var(--ms-bg); color: #fff; }
+    .ms .icon { box-shadow: 0 0 0 2px var(--ms-navy); }
     .ms h2 {
-      font-family: "Titan One", var(--text);
-      font-size: clamp(44px, 14vw, 72px);
-      letter-spacing: .01em;
-      color: #fff;
+      font-family: "Titan One", var(--text); color: #fff;
       text-shadow:
-        -3px -3px 0 var(--ms-navy), 3px -3px 0 var(--ms-navy), -3px 3px 0 var(--ms-navy), 3px 3px 0 var(--ms-navy),
-        0 -3px 0 var(--ms-navy), 0 3px 0 var(--ms-navy), -3px 0 0 var(--ms-navy), 3px 0 0 var(--ms-navy),
-        0 7px 0 var(--ms-navy);
+        -2px -2px 0 var(--ms-navy), 2px -2px 0 var(--ms-navy), -2px 2px 0 var(--ms-navy), 2px 2px 0 var(--ms-navy),
+        0 -2px 0 var(--ms-navy), 0 2px 0 var(--ms-navy), -2px 0 0 var(--ms-navy), 2px 0 0 var(--ms-navy),
+        0 4px 0 var(--ms-navy);
     }
     .ms a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
-    /* ---------- Wide screens: the two games side by side ---------- */
-    @media (min-width: 900px) {
-      main { grid-template-columns: 1fr 1fr; min-height: 100vh; }
-      .game { padding: max(96px, 22vh) 40px 96px; }
-      .owner { position: absolute; top: 32px; left: 40px; margin: 0; }
-      .links { position: absolute; bottom: 24px; margin: 0; }
-      .icon { width: 112px; height: 112px; border-radius: 26px; }
-      .kb::before, .kb::after { top: 0; }
-      .kb::before { top: 42%; }
-      .kb::after { background: radial-gradient(110% 80% at 50% 42%, transparent 30%, rgba(26, 3, 9, .7) 100%); }
-      .kb h2 { font-size: clamp(52px, 5.4vw, 76px); }
-      .ms h2 { font-size: clamp(60px, 6.4vw, 88px); }
-      .line { font-size: 21px; }
-      .how { font-size: 18px; }
-    }
+    footer { margin-top: 28px; padding: 0 4px; font-size: 14px; color: var(--ink-soft); display: grid; gap: 6px; }
+    footer p { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+    footer span { color: var(--ink); font-weight: 700; min-width: 96px; }
+    footer a { text-underline-offset: 3px; }
+    footer a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-    @media (prefers-reduced-motion: reduce) {
-      .stores a { transition: none; }
+    @media (max-width: 359px) {
+      .head { gap: 14px; }
+      .icon { width: 56px; height: 56px; border-radius: 13px; }
+      h2 { font-size: 21px; }
+      .tag { font-size: 15px; }
+    }
+    @media (min-width: 700px) {
+      .page { max-width: 540px; }
+      h1 { font-size: 18px; }
+      .cards { gap: 16px; margin-top: 24px; }
+      .card { padding: 28px; border-radius: 28px; }
+      .head { gap: 20px; }
+      .icon { width: 80px; height: 80px; border-radius: 18px; }
+      h2 { font-size: 34px; }
+      .tag { font-size: 17px; }
+      .stores { margin-top: 24px; }
+      .stores img { height: 46px; }
+      footer { margin-top: 32px; }
+    }
+    @media (hover: hover) {
+      .stores a:hover { opacity: .85; }
+      footer a:hover { color: var(--ink); }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="game kb" aria-labelledby="kb">
-      <h1 class="owner">Charbel Abou Khalil</h1>
-      <img class="icon" src="img/kezbe-bayda.png" width="96" height="96" alt="Kezbe Bayda app icon">
-      <h2 id="kb">Kezbe Bayda</h2>
-      <p class="line">The game show of lies.</p>
-      <p class="how">Write a fake answer, then find the real one.</p>
-      <div class="stores">
-        <a href="https://apps.apple.com/app/id6816085585"><img src="img/app-store.svg" width="144" height="48" alt="Download Kezbe Bayda on the App Store"></a>
-        <a href="https://play.google.com/store/apps/details?id=com.kezbebayda.app"><img src="img/google-play.png" width="161" height="48" alt="Get Kezbe Bayda on Google Play"></a>
-      </div>
-      <p class="links">
-        <a href="https://charbelabou.github.io/legal/kezbe-bayda/support.html">Support</a>
-        <a href="https://charbelabou.github.io/legal/kezbe-bayda/privacy.html">Privacy</a>
-      </p>
-    </section>
+  <div class="page">
+    <h1>Charbel Abou Khalil</h1>
 
-    <section class="game ms" aria-labelledby="ms">
-      <img class="icon" src="img/massela.png" width="96" height="96" alt="Massela app icon">
-      <h2 id="ms">Massela</h2>
-      <p class="line">Lebanese charades.</p>
-      <p class="how">Act out the word before the time runs out.</p>
-      <div class="stores">
-        <a href="https://apps.apple.com/app/id6757847836"><img src="img/app-store.svg" width="144" height="48" alt="Download Massela on the App Store"></a>
-      </div>
-      <p class="soon">Android version coming soon.</p>
-      <p class="links">
-        <a href="https://charbelabou.github.io/legal/massela/support.html">Support</a>
-        <a href="https://charbelabou.github.io/legal/massela/privacy.html">Privacy</a>
-      </p>
-    </section>
-  </main>
+    <main class="cards">
+      <section class="card kb" aria-labelledby="kb">
+        <div class="head">
+          <img class="icon" src="img/kezbe-bayda.png" width="64" height="64" alt="">
+          <div>
+            <h2 id="kb">Kezbe Bayda</h2>
+            <p class="tag">The game show of lies</p>
+          </div>
+        </div>
+        <div class="stores">
+          <a href="https://apps.apple.com/app/id6816085585"><img src="img/app-store.svg" width="132" height="44" alt="Download Kezbe Bayda on the App Store"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.kezbebayda.app"><img src="img/google-play.png" width="148" height="44" alt="Get Kezbe Bayda on Google Play"></a>
+        </div>
+      </section>
+
+      <section class="card ms" aria-labelledby="ms">
+        <div class="head">
+          <img class="icon" src="img/massela.png" width="64" height="64" alt="">
+          <div>
+            <h2 id="ms">Massela</h2>
+            <p class="tag">Lebanese charades</p>
+          </div>
+        </div>
+        <div class="stores">
+          <a href="https://apps.apple.com/app/id6757847836"><img src="img/app-store.svg" width="132" height="44" alt="Download Massela on the App Store"></a>
+          <span class="soon">Android coming soon</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><span>Kezbe Bayda</span><a href="https://charbelabou.github.io/legal/kezbe-bayda/support.html">Support</a><a href="https://charbelabou.github.io/legal/kezbe-bayda/privacy.html">Privacy</a></p>
+      <p><span>Massela</span><a href="https://charbelabou.github.io/legal/massela/support.html">Support</a><a href="https://charbelabou.github.io/legal/massela/privacy.html">Privacy</a></p>
+    </footer>
+  </div>
 </body>
 </html>
